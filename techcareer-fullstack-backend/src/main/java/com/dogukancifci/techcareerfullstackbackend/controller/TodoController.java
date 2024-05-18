@@ -1,5 +1,6 @@
 package com.dogukancifci.techcareerfullstackbackend.controller;
 
+import com.dogukancifci.techcareerfullstackbackend.exception.TodoNotFoundException;
 import com.dogukancifci.techcareerfullstackbackend.model.Todo;
 import com.dogukancifci.techcareerfullstackbackend.repository.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,5 +26,10 @@ public class TodoController {
     @GetMapping("/todos")
     List<Todo> getAllTodos() {
         return todoRepository.findAll();
+    }
+    @GetMapping("/todo/{id}")
+    Todo getTodoById(@PathVariable Long id) {
+        return todoRepository.findById(id)
+                .orElseThrow(() -> new TodoNotFoundException(id)); //bulamazsa exception gonder
     }
 }
