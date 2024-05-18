@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
@@ -8,12 +9,12 @@ function Navbar() {
         data-bs-theme="dark"
       >
         <div className="container-fluid">
-          <a className="navbar-brand" href="/">
+          <Link className="navbar-brand" to="/">
             Todo List
-          </a>
-          <button className="btn btn-outline-light" to="/addtodo">
+          </Link>
+          <Link className="btn btn-outline-light" to="/addtodo">
             Add Todo
-          </button>
+          </Link>
         </div>
       </nav>
     </div>
