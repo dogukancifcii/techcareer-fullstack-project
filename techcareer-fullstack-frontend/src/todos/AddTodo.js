@@ -18,12 +18,19 @@ function AddTodo() {
     //...todo amaci onceki todoyu kopyala suslu parantez sıkıntı cikarmasin
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    //submit yapinca sayfa yenileme kapatma
+
+    await axios.post("http://localhost:8080/todo", todo);
+    navigate("/");
+  };
   return (
     <div className="container">
       <div className="row">
         <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
           <h2 className="text-center m-4">Add Todo</h2>
-          <form>
+          <form onSubmit={(e) => handleSubmit(e)}>
             <div className="mb-3">
               <label htmlFor="title" className="form-label">
                 Title
