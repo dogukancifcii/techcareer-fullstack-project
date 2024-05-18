@@ -3,14 +3,12 @@ package com.dogukancifci.techcareerfullstackbackend.controller;
 import com.dogukancifci.techcareerfullstackbackend.model.Todo;
 import com.dogukancifci.techcareerfullstackbackend.repository.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController//RESTful web servisi icin (for RESTfuk)
+@CrossOrigin("http://localhost:3000") //hangi kaynaktan veri alacagina izin ver
 public class TodoController {
 
 
