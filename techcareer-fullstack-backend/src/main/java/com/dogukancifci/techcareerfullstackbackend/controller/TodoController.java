@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController//RESTful web servisi icin (for RESTfuk)
+@RestController//RESTful web servisi icin (for RESTful)
 @CrossOrigin("http://localhost:3000") //hangi kaynaktan veri alacagina izin ver
 public class TodoController {
 
@@ -46,5 +46,16 @@ public class TodoController {
                     todo.setCompleted(newTodo.isCompleted());
                     return todoRepository.save(todo);
                 }).orElseThrow(() -> new TodoNotFoundException(id));
+    }
+
+    //Delete
+    @DeleteMapping("/todo/{id}")
+    String deleteTodo(@PathVariable Long id) {
+        //eger id bulunmazsa hata firlatsin
+        if(!todoRepository.existsById(id)) {
+            throw new TodoNotFoundException(id);
+        }
+        todoRepository.deleteById(id);
+        return "Todo " + id + " numarali id ile silindi basarili...";
     }
 }
