@@ -18,6 +18,12 @@ function Home() {
     setTodos(result.data);
   };
 
+  //Delete todo
+  const deleteTodo = async (id) => {
+    await axios.delete(`http://localhost:8080/todo/${id}`);
+    loadTodos();
+  };
+
   //check complated todo
   const completeTodo = async (id, todo) => {
     setTodos(
@@ -83,7 +89,10 @@ function Home() {
                     <AiFillEdit className="me-2" />
                     Edit
                   </Link>
-                  <button className="btn btn-danger mx-2 fs-5">
+                  <button
+                    className="btn btn-danger mx-2 fs-5"
+                    onClick={() => deleteTodo(todo.id)}
+                  >
                     <FaTrash className="me-2" /> Delete
                   </button>
                 </td>
